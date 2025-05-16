@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Plataforma de Seguimiento a Planes de Estudio - UEES</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script defer src="app.js"></script>
+</head>
+<body>
+  <div id="login-section" class="section">
+    <h2>Acceso al sistema</h2>
+    <input type="text" id="username" placeholder="Usuario" />
+    <input type="password" id="password" placeholder="Contraseña" />
+    <button onclick="login()">Ingresar</button>
+    <p id="login-error" class="error"></p>
+  </div>
+
+  <div id="dashboard" class="section hidden">
+    <h2 id="welcome-msg"></h2>
+    <div id="admin-panel" class="hidden">
+      <h3>Gestión de usuarios</h3>
+      <input type="text" id="new-user" placeholder="Nuevo usuario" />
+      <input type="text" id="new-password" placeholder="Contraseña" />
+      <button onclick="addUser()">Agregar usuario</button>
+      <ul id="user-list"></ul>
+    </div>
+
+    <h3>Gestión de proyectos</h3>
+    <button onclick="showProjectForm()">Crear nuevo proyecto</button>
+    <ul id="project-list"></ul>
+  </div>
+
+  <div id="project-form" class="section hidden">
+    <h2>Nuevo Proyecto</h2>
+    <input type="text" id="project-name" placeholder="Nombre del proyecto" />
+    <select id="project-responsible"></select>
+    <input type="date" id="start-date" />
+    <input type="date" id="end-date" />
+    <select id="category">
+      <option value="Técnico">Técnico</option>
+      <option value="Pregrado">Pregrado</option>
+      <option value="Especialidades Médicas">Especialidades Médicas</option>
+      <option value="Posgrado">Posgrado</option>
+    </select>
+    <select id="type">
+      <option value="Nueva">Carrera nueva</option>
+      <option value="Actualización">Actualización</option>
+    </select>
+    <button onclick="saveProject()">Guardar Proyecto</button>
+    <button onclick="cancelProject()">Cancelar</button>
+  </div>
+
+  <div id="project-details" class="section hidden">
+    <h2 id="project-title"></h2>
+    <div id="phases"></div>
+    <div id="progress-summary"></div>
+    <button onclick="exportToPDF()">Exportar a PDF</button>
+  </div>
+
+  <!-- Bibliotecas externas -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</body>
+</html>
